@@ -1,4 +1,3 @@
-
 //const form = document.getElementById('form');
 const card = document.getElementById("meals");
 const recipe = document.getElementById("recepi")
