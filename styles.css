@@ -88,6 +88,7 @@ input{
   background-color: #ee634e;    padding: 10px;
     color: white;
     border-radius: 15px;
+    /* border: 2px solid white; */
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -100,7 +101,7 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 button:hover{
-    background-color: rgb(219, 18, 78);
+    background-color: rgb(175, 153, 159);
     color: white;
 }
 button:active{
@@ -146,6 +147,7 @@ button:active{
   color: white;
   padding: 5px;
   border-radius: 15px;
+  border: 2px solid white;
 
 }
 #recepi{
@@ -178,6 +180,12 @@ ul{
   display: flex;
   justify-content: space-around;
 } */
+
+#list-of-ingredients{
+  display: flex;
+  justify-content: space-between;
+}
+
 
 
 @media screen and (max-width: 1000px) {
@@ -217,6 +225,13 @@ ul{
     margin-right: 35px;
   }
 }
+.tab-pane{
+  color: orangered;
+}
 
 
+/* .div{
+  display: flex;
+  justify-content: space-around;
 
+} */
