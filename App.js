@@ -54,7 +54,7 @@ function calorieCal(e) {
 
 function getMealData() {
     fetch(
-        `https://api.spoonacular.com/mealplanner/generate?apiKey=3f828708fbab4a049ff0e3015cf3b008&timeFrame=day&targetCalories=${calorie}`
+        `https://api.spoonacular.com/mealplanner/generate?apiKey=23f83400487541318326a8982b98798d&timeFrame=day&targetCalories=${calorie}`
     )
         .then((response) => response.json())
         .then((data) => {
@@ -118,7 +118,7 @@ function dinnerRecipe(){
 function dataFetch(id) {
     var equipment = [];
     fetch(
-        `https://api.spoonacular.com/recipes/${id}/information?apiKey=3f828708fbab4a049ff0e3015cf3b008&includeNutrition=false`
+        `https://api.spoonacular.com/recipes/${id}/information?apiKey=23f83400487541318326a8982b98798d&includeNutrition=false`
     )
         .then((response) => response.json())
         .then((data) => {
@@ -160,9 +160,15 @@ function dataFetch(id) {
 
 function ingredientsShow(name, quantity) {
     const ul = document.getElementById("list-of-ingredients");
-    const li = document.createElement("li")
-    li.innerText = name + " - " + quantity;
-    ul.appendChild(li);
+    const li1 = document.createElement("li");
+    const li2 = document.createElement("li");
+    const div = document.createElement("div");
+    div.className='try';
+    ul.appendChild(div);
+    li1.innerText = name ;
+    li2.innerText=quantity;
+    div.appendChild(li1);
+    div.appendChild(li2);
 }
 
 
@@ -183,3 +189,11 @@ function equipmentShow(equipment) {
         ul.appendChild(li);
     }
 }
+
+
+// const try1=document.getElementsByClassName("try");
+// for (const element of try1) {
+//     element.style.display="grid";
+ 
+//   }
+
