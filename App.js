@@ -1,7 +1,6 @@
 //const form = document.getElementById('form');
 const card = document.getElementById("meals");
 const recipe = document.getElementById("recepi")
-const btn = document.getElementById("mealsbtn")
 const calories = document.querySelectorAll(".calories")
 const ingre=document.getElementById("ingredients-tab");
 const step=document.getElementById("step-tab");
@@ -11,18 +10,67 @@ const equ=document.getElementById("equipment-tab");
   equ.style.color='#ee634e';
 var calorie;
 var breakfastId, lunchId, dinnerId;
+
+function checkData() {
+  let height = document.getElementById("height").value;
+  let weight = document.getElementById("weight").value;
+  let age = document.getElementById("age").value;
+  let gender = document.getElementById("gender").value;
+  let activity = document.getElementById("activity").value;
+  let mealsBtn = document.getElementById("mealsbtn");
+  
+  if (height !== "" && weight !== "" && age !== "" && gender !== "other" && activity !== "other") 
+  {
+    mealsBtn.disabled = false;
+    mealsBtn.classList.add("enabled");
+    mealsBtn.classList.remove("disabled");
+  } 
+  else {
+    mealsBtn.disabled = true;
+    mealsBtn.classList.add("disabled");
+    mealsBtn.classList.remove("enabled");
+  }
+}
+
+// document.getElementById("height").addEventListener("input", function() {
+//     var nameInput = document.getElementById('height').value;
+//    // var weightInput = document.getElementById('weight').value;
+//     if (nameInput != "")
+//     {
+//         document.getElementById('mealsbtn').removeAttribute("disabled");
+//         document.getElementById('mealsbtn').style.backgroundColor="orangered";
+//         document.getElementById("mealsbtn").addEventListener('mouseover',function(){
+//             document.getElementById('mealsbtn').style.backgroundColor= "gray";
+//             });
+//         document.getElementById("mealsbtn").addEventListener('mouseout',function(){
+//             document.getElementById('mealsbtn').style.backgroundColor= "orangered";
+//                 });
+//         document.getElementById("mealsbtn").addEventListener('click',function(){
+//                     document.getElementById('mealsbtn').style.backgroundColor= "green";
+//                     });
+//       }
+//         else{
+//             document.getElementById('mealsbtn').disabled=true;
+//             document.getElementById('mealsbtn').style.backgroundColor="gray"
+//         }
+        
+//         //document.getElementById("myBtn").disabled = true;
+// });
+   //console.log(document.getElementById('mealsbtn').disabled)
+  const btn= document.getElementById('mealsbtn');
+ 
 btn.addEventListener("click", calorieCal)
 
 function calorieCal(e) {
     e.preventDefault();
     var bmr;
-    const height = document.getElementById("height").value;
-    const weight = document.getElementById("weight").value;
-    const age = document.getElementById("age").value;
-    const activity = document.getElementById("activity").value;
-    const gender = document.getElementById("gender").value;
-  
-    if(height!="" || weight!="" || age!="")
+    var height = document.getElementById("height").value;
+    var weight = document.getElementById("weight").value;
+    var age = document.getElementById("age").value;
+    var activity = document.getElementById("activity").value;
+    var gender = document.getElementById("gender").value;
+      
+    if(height!="" && weight!="" && age!="" && activity!="other" && gender!="other")
     {
       if (gender === "male") {
         bmr = 66.47 + (13.75 * weight) + (5.003 * height) - (6.755 * age)
@@ -41,24 +89,20 @@ function calorieCal(e) {
       else if(activity === "active"){
         calorie = bmr * 1.725;
       }
-      else
-      return;
-      console.log(bmr, calorie);
+      //return;
       getMealData();
-       /*  setTimeout(() => {
-        card.style.display = "block";
-       }, 3000);
-       */
   }
+  else
+  alert("Please Fill All Required Element");
 }
 
 function getMealData() {
     fetch(
-        `https://api.spoonacular.com/mealplanner/generate?apiKey=23f83400487541318326a8982b98798d&timeFrame=day&targetCalories=${calorie}`
+        `https://api.spoonacular.com/mealplanner/generate?apiKey=3fb6fbb1e04040a58d5edad8088c973f&timeFrame=day&targetCalories=${calorie}`
     )
         .then((response) => response.json())
         .then((data) => {
-            console.log(data);
+           // console.log(data);
             // e.stopPropagation();
             setMealData(data);
             card.style.display = "block";
@@ -118,7 +162,7 @@ function dinnerRecipe(){
 function dataFetch(id) {
     var equipment = [];
     fetch(
-        `https://api.spoonacular.com/recipes/${id}/information?apiKey=23f83400487541318326a8982b98798d&includeNutrition=false`
+        `https://api.spoonacular.com/recipes/${id}/information?apiKey=3fb6fbb1e04040a58d5edad8088c973f&includeNutrition=false`
     )
         .then((response) => response.json())
         .then((data) => {
@@ -158,19 +202,24 @@ function dataFetch(id) {
         });
 }
 
+// function ingredientsShow(name, quantity) {
+//     const ul = document.getElementById("list-of-ingredients");
+//     const li1 = document.createElement("li");
+//     const li2 = document.createElement("li");
+//     const div = document.createElement("div");
+//     div.className='try';
+//     ul.appendChild(div);
+//     li1.innerText = name ;
+//     li2.innerText=quantity;
+//     div.appendChild(li1);
+//     div.appendChild(li2);
+// }
 function ingredientsShow(name, quantity) {
     const ul = document.getElementById("list-of-ingredients");
     const li1 = document.createElement("li");
-    const li2 = document.createElement("li");
-    const div = document.createElement("div");
-    div.className='try';
-    ul.appendChild(div);
-    li1.innerText = name ;
-    li2.innerText=quantity;
-    div.appendChild(li1);
-    div.appendChild(li2);
+    li1.innerText = name + " - " + quantity;
+    ul.appendChild(li1);
 }
-
 
 function stepShow(step) {
     const ol = document.getElementById("steps")
@@ -196,4 +245,3 @@ function equipmentShow(equipment) {
 //     element.style.display="grid";
  
 //   }
-
