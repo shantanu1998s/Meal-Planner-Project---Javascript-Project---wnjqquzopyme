@@ -5,6 +5,7 @@ const calories = document.querySelectorAll(".calories")
 const ingre=document.getElementById("ingredients-tab");
 const step=document.getElementById("step-tab");
 const equ=document.getElementById("equipment-tab");
+const myform = document.getElementById('form');
   ingre.style.color='#ee634e';
   step.style.color='#ee634e';
   equ.style.color='#ee634e';
@@ -91,6 +92,10 @@ function calorieCal(e) {
       }
       //return;
       getMealData();
+      myform.reset();
+      btn.disabled = true;
+      btn.style.background="white";
+      btn.style.color="gray";
   }
   else
   alert("Please Fill All Required Element");
@@ -111,7 +116,6 @@ function getMealData() {
             console.log(error);
         });
 }
-
 
 function setMealData(data) {
     setBreakFastData(data.meals[0]);
