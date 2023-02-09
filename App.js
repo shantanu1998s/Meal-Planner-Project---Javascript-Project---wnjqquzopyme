@@ -92,10 +92,11 @@ function calorieCal(e) {
       }
       //return;
       getMealData();
-      myform.reset();
+       myform.reset();
       btn.disabled = true;
-      btn.style.background="white";
-      btn.style.color="gray";
+      btn.classList.remove("enabled");
+    //   btn.style.background="white";
+    //   btn.style.color="gray";
   }
   else
   alert("Please Fill All Required Element");
