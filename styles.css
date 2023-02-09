@@ -4,7 +4,6 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "poppins", sans-serif;
-  box-sizing: border-box;
 }
 main{
   /* background-color: aqua; */
@@ -85,10 +84,9 @@ input{
     background-color: rgb(232, 224, 224);
   }
 .mybtn{
-  background-color: #ee634e;    padding: 10px;
-    color: white;
     border-radius: 15px;
-    /* border: 2px solid white; */
+    padding: 10px;
+   background-color: white;
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -100,13 +98,13 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
-button:hover{
+/* button:hover{
     background-color: rgb(175, 153, 159);
     color: white;
-}
-button:active{
+} */
+/* button:active{
     background-color: red;
-}
+} */
 
 #card {
     display: flex;
@@ -129,6 +127,8 @@ button:active{
   border: 1px solid transparent;
   box-shadow: 5px 10px 18px #888888;
   padding-bottom: 20px;
+  resize: both;
+  overflow: auto;
 }
 
 .top{
@@ -148,8 +148,14 @@ button:active{
   padding: 5px;
   border-radius: 15px;
   border: 2px solid white;
-
 }
+.btn2:hover {
+  background-color: gray;
+}
+.btn2:active {
+  background-color: red;
+}
+
 #recepi{
   margin-top: 10px;
 }
@@ -164,6 +170,7 @@ button:active{
   margin-top: 5px;
   margin-left: 112px;
   margin-right: 112px;
+  margin-bottom: 100px;
   overflow: hidden;
   position: relative;
   text-overflow: ellipsis;
@@ -171,22 +178,16 @@ button:active{
   box-shadow: 5px 10px 18px #888888;
   color: black;
 }
-ul{
+.nav-tabs{
   display: flex;
   justify-content: space-around;
 }
 
-/* .tab-content{
+/* #list-of-ingredients{
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  align-items: flex-start;
 } */
-
-#list-of-ingredients{
-  display: flex;
-  justify-content: space-between;
-}
-
-
 
 @media screen and (max-width: 1000px) {
   #card{
@@ -229,9 +230,30 @@ ul{
   color: orangered;
 }
 
-
-/* .div{
+.try{
+  width: 100%;
   display: flex;
   justify-content: space-around;
+  text-align: left;
+}
 
-} */
+.disabled{
+  background-color:white;
+  /* border-radius: 15px;
+  padding: 10px; */
+}
+.enabled{
+ background-color: #ee634e;
+ color: white;
+}
+.enabled:hover{
+  background-color: #888888;
+}
+.enabled:active{
+  background-color: rgb(242, 24, 24);
+}
+#list-of-ingredients{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
