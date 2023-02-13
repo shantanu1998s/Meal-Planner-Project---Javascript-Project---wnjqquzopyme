@@ -22,7 +22,6 @@
     <div class="tab">
     <main>
     <nav>
-        <!-- <img class="imgg" src="img1.png" alt=""> -->
         <h3 class="nav-h">Meal Planner</h3>
    </nav> 
     <div >
@@ -53,8 +52,8 @@
         </form>
     </div>
     <section id="meals" style="display: none;">
-        <div id="card">
-            <div class="cards">
+        <div id="cards-container">
+            <div class="card">
                 <h3 class="top">BREAKFAST</h3>
 
                 <img src="img2.jpg" id="breakfast-image" class="card-img-top" alt="...">
@@ -64,7 +63,7 @@
                     <button class="button btn2" id="breakfast-btn" onclick="breakFastRecipe()">Get Recipe</button>
                 </div>
             </div>
-            <div class="cards">
+            <div class="card">
                 <h3 class="top">LUNCH</h3>
                 <img src="img2.jpg" id="lunch-image" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -73,7 +72,7 @@
                     <button class="button btn2" id="lunch-btn" onclick="lunchRecipe()">Get Recipe</button>
                 </div>
             </div>
-            <div class="cards">
+            <div class="card">
                 <h3 class="top">DINNER</h3>
                 <img src="img2.jpg" id="dinner-image" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -89,17 +88,17 @@
         <div class="footer">
 
         <ul class="nav nav-tabs" id="recepi-list" role="tablist">
-            <li class="nav-item">
-                <a class="nav-link" id="ingredients-tab" href="#ingredients" role="tab"
-                    aria-controls="ingredients" aria-selected="true">Ingredients</a>
+            <li class="nav-item" id="nav-items">
+                <a class="nav-link" onclick="change1()" id="ingredients-tab" href="#ingredients" role="tab"
+                    aria-controls="ingredients" >Ingredients</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" id="step-tab" href="#step" role="tab" aria-controls="step"
-                    aria-selected="false">Steps</a>
+            <li class="nav-item" >
+                <a class="nav-link" onclick="change2()" id="step-tab" href="#step" role="tab" aria-controls="step"
+                     >Steps</a> 
             </li>
-            <li class="nav-item">
-                <a class="nav-link" id="equipment-tab" href="#equipment" role="tab" aria-controls="equipment"
-                    aria-selected="false">Equipment</a>
+            <li class="nav-item" >
+                <a class="nav-link" onclick="change3()" id="equipment-tab" href="#equipment" role="tab" aria-controls="equipment"
+                    >Equipment</a>
             </li>
         </ul>
 
@@ -119,7 +118,9 @@
     </div>
     </section>
 </main>
-        <script>
+
+    <script>
+
         $('#recepi-list a').on('click', function (e) {
             e.preventDefault()
             $(this).tab('show')
