@@ -5,15 +5,7 @@
   box-sizing: border-box;
   font-family: "poppins", sans-serif;
 }
-main{
-  /* background-color: aqua; */
-  /* height: 100vh; */
-}
-.tab{
-  /* background-color: rgb(255, 0, 60);
-  box-shadow: 20px 20px  20px 0px gray;
-  margin: 0px 20px 20px 0px; */
-}
+
 nav{
     position: fixed;
     top: 0;
@@ -94,33 +86,25 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-/* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
 }
-/* button:hover{
-    background-color: rgb(175, 153, 159);
-    color: white;
-} */
-/* button:active{
-    background-color: red;
-} */
 
-#card {
+#cards-container {
+  margin-top: 50px;
     display: flex;
     justify-content: space-around;
 }
 
 
 #form{
-    padding-top: 40px;
+    padding-top: 100px;
 }
 
-.cards{
+.card{
   width: 300px;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   color: #ee634e; 
   background-color: white;
   border-radius: 15px;
@@ -157,19 +141,21 @@ input[type=number] {
 }
 
 #recepi{
-  margin-top: 10px;
+  margin-top: 50px;
 }
 
 .card-body{
   background-color:#ee634e;
    color: white;
 }
-
+.tab-content{
+  font-style: italic;
+}
 .footer{
   background-color: rgb(232, 224, 224);
   margin-top: 5px;
-  margin-left: 112px;
-  margin-right: 112px;
+  margin-left: 90px;
+  margin-right: 90px;
   margin-bottom: 100px;
   overflow: hidden;
   position: relative;
@@ -183,23 +169,16 @@ input[type=number] {
   justify-content: space-around;
 }
 
-/* #list-of-ingredients{
+#cards-container{
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-} */
-#card{
-  display: flex;
-  /* justify-content: space-around; */
   flex-wrap: wrap;
   align-items: center;
   gap: 10px;
 }
 
 @media screen and (max-width: 1000px) {
-  #card{
+  #cards-container{
     display: flex;
-    /* justify-content: space-around; */
     flex-wrap: wrap;
     align-items: center;
     gap: 10px;
@@ -210,7 +189,6 @@ input[type=number] {
     margin-top: 40px;
     display: flex;
     height:150px;
-    /* justify-content: space-around; */
     flex-wrap: wrap;
     align-items: center;
     gap: 10px;
@@ -220,7 +198,6 @@ input[type=number] {
 @media screen and (max-width: 1000px) {
   .form-second{
     display: flex;
-    /* justify-content: space-around; */
     flex-wrap: wrap;
     align-items: center;
     gap: 10px;
@@ -246,8 +223,6 @@ input[type=number] {
 
 .disabled{
   background-color:white;
-  /* border-radius: 15px;
-  padding: 10px; */
 }
 .enabled{
  background-color: #ee634e;
