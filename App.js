@@ -63,11 +63,11 @@ function checkData() {
   }
 }
 
-  const btn= document.getElementById('mealsbtn');
+ const btn= document.getElementById('mealsbtn');
  
-btn.addEventListener("click", calorieCal)
+ btn.addEventListener("click", calorieCal)
 
-function calorieCal(e) {
+ function calorieCal(e) {
     e.preventDefault();
     var bmr;
     var height = document.getElementById("height").value;
@@ -171,14 +171,12 @@ function dataFetch(id) {
     )
         .then((response) => response.json())
         .then((data) => {
-            console.log("data--",data)
             document.getElementById("steps").innerHTML = ""
             for (item of data.analyzedInstructions) {
                 for (i of item.steps) {
                     stepShow(i.step);
                 }
             }
-        console.log("item-stemps",item.steps)
             document.getElementById("list-of-ingredients").innerHTML = "";
             for (item of data.extendedIngredients) {
                 var quantity = item.amount + " " + item.unit
@@ -208,26 +206,26 @@ function dataFetch(id) {
 }
 
 function ingredientsShow(name, quantity) {
-    const ul = document.getElementById("list-of-ingredients");
-    const li1 = document.createElement("li");
-    li1.innerText = name + " - " + quantity;
-    ul.appendChild(li1);
+    const ul_list_of_ingredients= document.getElementById("list-of-ingredients");
+    const li_of_ingredients = document.createElement("li");
+    li_of_ingredients.innerText  = name + " - " + quantity;
+    ul_list_of_ingredients.appendChild(li_of_ingredients);
 }
 
 function stepShow(step) {
-    const ol = document.getElementById("steps")
-    const li = document.createElement("li");
-    li.innerText = step;
-    ol.appendChild(li);
+    const ol_of_steps = document.getElementById("steps")
+    const li_of_steps = document.createElement("li");
+    li_of_steps.innerText = step;
+    ol_of_steps.appendChild(li_of_steps);
 }
 
 function equipmentShow(equipment) {
-    const ul = document.getElementById("equip")
-    ul.innerHTML = ""
+    const ul_equip = document.getElementById("equip")
+    ul_equip.innerHTML = ""
     for (i of equipment) {
         var temp=i.charAt(0).toUpperCase() + i.slice(1);;
-        const li = document.createElement("li");
-        li.innerText = temp;
-        ul.appendChild(li);
+        const li_of_equip = document.createElement("li");
+        li_of_equip.innerText = temp;
+        ul_equip.appendChild(li_of_equip);
     }
 }
