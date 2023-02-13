@@ -1,4 +1,3 @@
-//const form = document.getElementById('form');
 const card = document.getElementById("meals");
 const recipe = document.getElementById("recepi")
 const calories = document.querySelectorAll(".calories")
@@ -6,11 +5,42 @@ const ingre=document.getElementById("ingredients-tab");
 const step=document.getElementById("step-tab");
 const equ=document.getElementById("equipment-tab");
 const myform = document.getElementById('form');
-  ingre.style.color='#ee634e';
-  step.style.color='#ee634e';
-  equ.style.color='#ee634e';
+const ingre_li=document.getElementById("ingredients");
+const step_li=document.getElementById("step");
+const equip_li=document.getElementById("equipment")
+  ingre_li.style.color='#000000';
+  step_li.style.color='#000000';
+  equip_li.style.color='#000000';
 var calorie;
 var breakfastId, lunchId, dinnerId;
+document.getElementById("ingredients-tab").style.backgroundColor= "orangered";
+document.getElementById("ingredients-tab").style.color= "white";
+document.getElementById("equipment-tab").style.color= "orangered";
+document.getElementById("step-tab").style.color= "orangered"
+function change1() {
+    document.getElementById("ingredients-tab").style.backgroundColor= "orangered";
+    document.getElementById("ingredients-tab").style.color= "white";
+    document.getElementById("step-tab").style.backgroundColor= "rgb(232, 224, 224)";
+    document.getElementById("step-tab").style.color= "orangered"
+    document.getElementById("equipment-tab").style.backgroundColor= "rgb(232, 224, 224)";
+    document.getElementById("equipment-tab").style.color= "orangered";
+  }
+  function change2() {
+    document.getElementById("step-tab").style.backgroundColor= "orangered";
+    document.getElementById("step-tab").style.color= "white";
+    document.getElementById("ingredients-tab").style.backgroundColor= "rgb(232, 224, 224)";
+    document.getElementById("ingredients-tab").style.color= "orangered";
+    document.getElementById("equipment-tab").style.backgroundColor= "rgb(232, 224, 224)";
+    document.getElementById("equipment-tab").style.color= "orangered";
+  }
+  function change3() {
+    document.getElementById("equipment-tab").style.backgroundColor= "orangered";
+    document.getElementById("equipment-tab").style.color= "white";
+    document.getElementById("ingredients-tab").style.backgroundColor= "rgb(232, 224, 224)";
+    document.getElementById("ingredients-tab").style.color= "orangered";
+    document.getElementById("step-tab").style.backgroundColor= "rgb(232, 224, 224)";
+    document.getElementById("step-tab").style.color= "orangered";
+  }
 
 function checkData() {
   let height = document.getElementById("height").value;
@@ -33,31 +63,6 @@ function checkData() {
   }
 }
 
-// document.getElementById("height").addEventListener("input", function() {
-//     var nameInput = document.getElementById('height').value;
-//    // var weightInput = document.getElementById('weight').value;
-//     if (nameInput != "")
-//     {
-//         document.getElementById('mealsbtn').removeAttribute("disabled");
-//         document.getElementById('mealsbtn').style.backgroundColor="orangered";
-//         document.getElementById("mealsbtn").addEventListener('mouseover',function(){
-//             document.getElementById('mealsbtn').style.backgroundColor= "gray";
-//             });
-//         document.getElementById("mealsbtn").addEventListener('mouseout',function(){
-//             document.getElementById('mealsbtn').style.backgroundColor= "orangered";
-//                 });
-//         document.getElementById("mealsbtn").addEventListener('click',function(){
-//                     document.getElementById('mealsbtn').style.backgroundColor= "green";
-//                     });
-//       }
-//         else{
-//             document.getElementById('mealsbtn').disabled=true;
-//             document.getElementById('mealsbtn').style.backgroundColor="gray"
-//         }
-        
-//         //document.getElementById("myBtn").disabled = true;
-// });
-   //console.log(document.getElementById('mealsbtn').disabled)
   const btn= document.getElementById('mealsbtn');
  
 btn.addEventListener("click", calorieCal)
@@ -90,13 +95,10 @@ function calorieCal(e) {
       else if(activity === "active"){
         calorie = bmr * 1.725;
       }
-      //return;
       getMealData();
        myform.reset();
       btn.disabled = true;
       btn.classList.remove("enabled");
-    //   btn.style.background="white";
-    //   btn.style.color="gray";
   }
   else
   alert("Please Fill All Required Element");
@@ -108,8 +110,6 @@ function getMealData() {
     )
         .then((response) => response.json())
         .then((data) => {
-           // console.log(data);
-            // e.stopPropagation();
             setMealData(data);
             card.style.display = "block";
         })
@@ -171,14 +171,14 @@ function dataFetch(id) {
     )
         .then((response) => response.json())
         .then((data) => {
-            console.log(data)
+            console.log("data--",data)
             document.getElementById("steps").innerHTML = ""
             for (item of data.analyzedInstructions) {
                 for (i of item.steps) {
                     stepShow(i.step);
                 }
             }
-
+        console.log("item-stemps",item.steps)
             document.getElementById("list-of-ingredients").innerHTML = "";
             for (item of data.extendedIngredients) {
                 var quantity = item.amount + " " + item.unit
@@ -207,18 +207,6 @@ function dataFetch(id) {
         });
 }
 
-// function ingredientsShow(name, quantity) {
-//     const ul = document.getElementById("list-of-ingredients");
-//     const li1 = document.createElement("li");
-//     const li2 = document.createElement("li");
-//     const div = document.createElement("div");
-//     div.className='try';
-//     ul.appendChild(div);
-//     li1.innerText = name ;
-//     li2.innerText=quantity;
-//     div.appendChild(li1);
-//     div.appendChild(li2);
-// }
 function ingredientsShow(name, quantity) {
     const ul = document.getElementById("list-of-ingredients");
     const li1 = document.createElement("li");
@@ -243,10 +231,3 @@ function equipmentShow(equipment) {
         ul.appendChild(li);
     }
 }
-
-
-// const try1=document.getElementsByClassName("try");
-// for (const element of try1) {
-//     element.style.display="grid";
- 
-//   }
